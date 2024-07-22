@@ -20,21 +20,24 @@ function App() {
 
   const [select, setSelect] = useState("modelMarin")
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
-    var files = e.target.files, f = files[0]
-    var reader = new FileReader()
-    reader.onload = function (e) {
-      if (e.target) {
-        var data = e.target.result
-        let readedData = XLSX.read(data, { type: 'binary' })
-        const wsname = readedData.SheetNames[0]
-        const ws = readedData.Sheets[wsname]
-        const dataParse = XLSX.utils.sheet_to_json(ws, { header: 1 })
-        setFileUploaded(dataParse)
+    var files = e.target.files
+    if (files) {
+      const f = files[0]
+      var reader = new FileReader()
+      reader.onload = function (e) {
+        if (e.target) {
+          var data = e.target.result
+          let readedData = XLSX.read(data, { type: 'binary' })
+          const wsname = readedData.SheetNames[0]
+          const ws = readedData.Sheets[wsname]
+          const dataParse = XLSX.utils.sheet_to_json(ws, { header: 1 })
+          setFileUploaded(dataParse)
+        }
       }
+      reader.readAsArrayBuffer(f)
     }
-    reader.readAsArrayBuffer(f)
   }
 
 
