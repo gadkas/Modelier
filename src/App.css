@@ -5,19 +5,38 @@
   text-align: center;
 }
 
+.titleContainer {
+  position: relative;
+}
+
+.title {
+margin-top: 0;
+}
+
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 150px;
+  padding: 0em;
   will-change: filter;
   transition: filter 300ms;
+  position: absolute;
+  top: -110px;
+  right: 0px;
+}
+
+.max {
+  height: 100px;
+  will-change: filter;
+  transition: filter 300ms;
+  position: absolute;
+  top: 20px;
+  right: 30px;
 }
 
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.max:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 
 .inputcontainer {
@@ -25,9 +44,6 @@
   gap: 16px;
 }
 
-.max {
-  height: 23em;
-}
 
 @keyframes logo-spin {
   from {
