@@ -22,13 +22,13 @@ function App() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
-    var files = e.target.files
+    const files = e.target.files
     if (files) {
       const f = files[0]
-      var reader = new FileReader()
+      const reader = new FileReader()
       reader.onload = function (e) {
         if (e.target) {
-          var data = e.target.result
+          const data = e.target.result
           let readedData = XLSX.read(data, { type: 'binary' })
           const wsname = readedData.SheetNames[0]
           const ws = readedData.Sheets[wsname]
